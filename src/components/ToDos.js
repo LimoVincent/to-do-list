@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Todo from './Todo'
 
-export default class ToDos extends Component {
-    render() {
-        return (
-            <div>
-                <h1>To ToDos</h1>
-            </div>
-        )
-    }
+const ToDos = ({ todos, setTodos }) => {
+  return (
+    <div className='todos'>
+      <h1> Todos</h1>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <Todo todo={todo} todos={todos}  setTodos={setTodos} />
+        </div>
+      ))}
+    </div>
+  )
 }
-
-
+export default ToDos

@@ -1,46 +1,46 @@
-import React, { Component } from 'react'
-import './App.css';
-import ToDos from './components/ToDos';
-
-
- class App extends Component {
+import React, { useState } from 'react'
+import './App.css'
+import ToDos from './components/Todos'
+import { v4 as uuidv4 } from 'uuid'
+import { Layout} from 'antd'
   
+const { Header,Footer, Content } = Layout
 
-   state = {
-    todos : [{
-      id: 1, 
-      title: 'To do 1',
-      completed : false
-   },
-   {
-     id: 2, 
-    title: 'To do 2',
-    completed : false
-  },
-  {
-    id: 3, 
-    title: 'To do 3',
-    completed : false
-  }, 
-  {
-  id: 4, 
-  title: 'To do 4',
-  completed : false
-  }
+const App = () => {
+  const data = [
+    {
+      id: uuidv4(),
+      title: 'Add Task - for example we need to implement work',
+      completed: false,
+    },
+    {
+      id: uuidv4(),
+      title: 'Delete Task - for example we need to implement work',
+      completed: false,
+    },
+    {
+      id: uuidv4(),
+      title: 'Update Task - for example we need to implement work',
+      completed: false,
+    },
+    {
+      id: uuidv4(),
+      title: 'Get task list - for example we need to implement work',
+      completed: false,
+    },
   ]
-  }
-  
-  render() {
-    
-    return (
-    <div className="App">
-        <h1>ToDos : </h1>
-      <ToDos todos = {this.state.todos}/>
-      </div>
-    )
-  }
+  const [todo, setTodo] = useState('')
+  const [todos, setTodos] = useState(data)
+
+  return (
+    <Layout>
+      <Header>Todo List</Header>
+      <Content>
+        <ToDos todos={todos} setTodos={setTodos} />
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  )
 }
-export default App;
 
-
-
+export default App
