@@ -2,45 +2,40 @@ import React, { useState } from 'react'
 import './App.css'
 import ToDos from './components/Todos'
 import { v4 as uuidv4 } from 'uuid'
-import { Layout} from 'antd'
-  
-const { Header,Footer, Content } = Layout
+import Form from './components/Form'
 
 const App = () => {
   const data = [
     {
       id: uuidv4(),
-      title: 'Add Task - for example we need to implement work',
+      title: 'Add   Task -Click the button to add more tasks',
       completed: false,
     },
     {
       id: uuidv4(),
-      title: 'Delete Task - for example we need to implement work',
+      title: 'Delete  Task - Click the button to add more tasks',
+      completed: true,
+    },
+    {
+      id: uuidv4(),
+      title: 'Update  Task - Click the button to add more tasks ',
       completed: false,
     },
     {
       id: uuidv4(),
-      title: 'Update Task - for example we need to implement work',
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: 'Get task list - for example we need to implement work',
-      completed: false,
+      title: 'Get task list - Click the button to add more tasks ',
+      completed: true,
     },
   ]
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState(data)
 
   return (
-    <Layout>
-      <Header>Todo List</Header>
-      <Content>
-        <ToDos todos={todos} setTodos={setTodos} />
-      </Content>
-      <Footer>Footer</Footer>
-    </Layout>
+    <div className='app'>
+      <h1>Todo List</h1>
+      <Form {...{ todos, todo, setTodo, setTodos }} />
+      <ToDos todos={todos} setTodos={setTodos} />
+    </div>
   )
 }
-
 export default App
